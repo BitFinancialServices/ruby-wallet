@@ -13,10 +13,14 @@ module RubyWallet
       client.getreceivedbyaccount(account, RubyWallet.config.min_conf)
     end
 
+    def create_account(name)
+      
+    end
+
     def listaccounts
       client.listaccounts
     end
-    
+
     def accounts
       @accounts ||= Accounts.new(self)
     end
