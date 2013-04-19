@@ -30,13 +30,24 @@ module RubyWallet
         parse_error e.response
     end
 
-    def send_many(options={})
-      client.sendmany(self.name,
-                      options,
-                      RubyWallet.config.min_conf)
+    def send_many(account_values={})
+      addresses_values = {}
+      account_values.each do |key, value|
+        address = key.respond_to?(:address) ? key.address : key
+        addresses_values[address] = value
+      end
 
-      rescue RestClient::InternalServerError => e
-        parse_error e.response
+      txid = client.send_many(self.name,
+                              addresses_values,
+                              RubyWallet.config.min_conf)
+      txid
+    rescue => e
+      error_message = JSON.parse(e.response).with_indifferent_access
+      if error_message[:error][:code] == -6
+        fail InsufficientFunds, "'#{self.name}' does not have enough funds"
+      else
+        raise e
+      end
     end
 
     def move_to(amount, options={})
