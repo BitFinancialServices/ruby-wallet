@@ -19,8 +19,8 @@ module RubyWallet
       if self.includes_account_name?(name)
         account = self.detect {|a| a.name == name}
       else
-        account = RubyWallet::Account.new(wallet, name)
-        account.addresses
+        account = Account.new(wallet, name)
+        account.addresses.new
         self << account
       end
       account
