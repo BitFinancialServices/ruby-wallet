@@ -12,7 +12,7 @@ module RubyWallet
                 :received_at)
 
     def initialize(wallet, args)
-      args = args.with_indifferent_access
+      #args = args.with_indifferent_access
       @wallet = wallet
       #@account = wallet.accounts.new(args[:account])
       @id = args[:txid]

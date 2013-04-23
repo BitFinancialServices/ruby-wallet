@@ -70,7 +70,7 @@ module RubyWallet
 
     def transactions(from = 0, to)
       client.listtransactions(self.name, to, from).map do |hash|
-        Transaction.new self.wallet, hash
+        Transaction.new(self.wallet, hash)
       end
     end
 
