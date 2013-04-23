@@ -23,7 +23,7 @@ module RubyWallet
 
     def transactions(account = "*", from = 0, to)
       client.listtransactions(account, to, from).map do |hash|
-        Transaction.new self, hash
+        Transaction.new(self, hash)
       end
     end
 

@@ -12,17 +12,16 @@ module RubyWallet
                 :received_at)
 
     def initialize(wallet, args)
-      #args = args.with_indifferent_access
       @wallet = wallet
       #@account = wallet.accounts.new(args[:account])
-      @id = args[:txid]
-      @address = args[:address]
-      @recipient_account = args[:otheraccount] if args[:otheraccount]
-      @amount = args[:amount]
-      @confirmations = args[:confirmations] if args[:confirmations]
-      @occurred_at = Time.at(args[:time]) if args[:time]
-      @received_at = Time.at(args[:timereceived]) if args[:timereceived]
-      @category = args[:category]
+      @id = args["txid"]
+      @address = args["address"]
+      @recipient_account = args["otheraccount"] if args["otheraccount"]
+      @amount = args["amount"]
+      @confirmations = args["confirmations"] if args["confirmations"]
+      @occurred_at = Time.at(args["time"]) if args["time"]
+      @received_at = Time.at(args["timereceived"]) if args["timereceived"]
+      @category = args["category"]
     end
 
   end
