@@ -5,12 +5,12 @@ module RubyWallet
       @config = config
     end
 
-    def balance(account = nil)
-      client.balance(account)
+    def balance(account = nil, min_conf = 0)
+      client.balance(account, min_conf)
     end
 
-    def total_received(account = "*")
-      client.getreceivedbyaccount(account, RubyWallet.config.min_conf)
+    def total_received(account = "*", min_conf = 0)
+      client.getreceivedbyaccount(account, min_conf)
     end
 
     def listaccounts

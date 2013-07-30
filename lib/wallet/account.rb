@@ -55,7 +55,7 @@ module RubyWallet
       if to_account
         to = to_account.name
       else
-        fail ArgumentError, 'could not find account'
+        fail ArgumentError, "could not find account"
       end
       client.move(self.name, to, amount, RubyWallet.config.min_conf)
     end

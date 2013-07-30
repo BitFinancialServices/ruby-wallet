@@ -261,14 +261,9 @@ class Bitcoin::Client
     @api.request 'walletlock'
   end
 
-  def dumpprivkey(address)
-    @api.request 'dumpprivkey', address
-  end
-
   alias encrypt encryptwallet
   alias unlock walletpassphrase
   alias lock walletlock
-  alias private_key dumpprivkey
   alias account getaccount
   alias account_address getaccountaddress
   alias addresses_by_account getaddressesbyaccount
