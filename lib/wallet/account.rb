@@ -12,7 +12,11 @@ module RubyWallet
       @addresses ||= Addresses.new(self)
     end
 
-    def balance(min_conf=RubyWallet.config.min_conf)
+    def get_addresses
+      client.getaccountaddress self.name
+    end
+
+    def balance(min_conf = 0)
       client.getbalance(self.name, min_conf)
     end
 
