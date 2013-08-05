@@ -20,7 +20,7 @@ module RubyWallet
         account = self.detect {|a| a.name == name}
       else
         account = Account.new(wallet, name)
-        account.addresses.new
+        account.generate_new_address
         self << account
       end
       account

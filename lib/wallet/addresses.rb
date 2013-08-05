@@ -5,7 +5,7 @@ module RubyWallet
 
     def initialize(account)
       @account = account
-      address = client.getaddressesbyaccount(self.name)
+      address = client.getaddressesbyaccount(@account.name)
     end
 
     def new(address_str=nil)
