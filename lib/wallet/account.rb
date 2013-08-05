@@ -8,8 +8,12 @@ module RubyWallet
       @name = name
     end
 
+    def generate_new_address
+      Addresses.new(name)
+    end
+
     def addresses
-      @addresses ||= Addresses.new(self)
+      @addresses ||= client.getaddressesbyaccount(name)
     end
 
     def get_addresses
