@@ -18,7 +18,7 @@ module RubyWallet
     end
 
     def accounts
-      @accounts ||= Accounts
+      @accounts ||= Accounts.new(self)
     end
 
     def transactions(account = "*", from = 0, to)
