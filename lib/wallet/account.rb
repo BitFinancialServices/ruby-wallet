@@ -16,7 +16,7 @@ module RubyWallet
       @addresses ||= client.getaddressesbyaccount(name)
     end
 
-    def get_addresses
+    def primary_address
       client.getaccountaddress self.name
     end
 
