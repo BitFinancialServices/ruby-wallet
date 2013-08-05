@@ -15,7 +15,13 @@ module RubyWallet
       end
     end
 
-    def new(name)
+    def new
+      client.listaccounts.each do |account|
+        self.push(Account.new(@wallet, account[0]))
+      end
+    end
+
+    def create(name)
       if self.includes_account_name?(name)
         account = self.detect {|a| a.name == name}
       else
