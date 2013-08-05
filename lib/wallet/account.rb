@@ -9,7 +9,7 @@ module RubyWallet
     end
 
     def generate_new_address
-      Addresses.new(name)
+      Address.new(self)
     end
 
     def addresses
