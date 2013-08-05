@@ -16,10 +16,6 @@ module RubyWallet
       @addresses ||= client.getaddressesbyaccount(name)
     end
 
-    def primary_address
-      client.getaccountaddress self.name
-    end
-
     def balance(min_conf = 0)
       client.getbalance(self.name, min_conf)
     end
@@ -84,16 +80,16 @@ module RubyWallet
 
     private
 
-    def parse_error(response)
-      json_response = JSON.parse(response)
-      hash = json_response.with_indifferent_access
-      error = if hash[:error]
-                case hash[:error][:code]
-                when -6
-                  InsufficientFunds.new("cannot send an amount more than what this account (#{self.name}) has")
+      def parse_error(response)
+        json_response = JSON.parse(response)
+        hash = json_response.with_indifferent_access
+        error = if hash[:error]
+                  case hash[:error][:code]
+                  when -6
+                    InsufficientFunds.new("cannot send an amount more than what this account (#{self.name}) has")
+                  end
                 end
-              end
-      fail error if error
-    end
+        fail error if error
+      end
   end
 end
