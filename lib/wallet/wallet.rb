@@ -47,7 +47,6 @@ module RubyWallet
       client.validateaddress(bitcoinaddress)
     end
 
-    private
     def client
       @client ||= Bitcoin(@config[:username],
                           @config[:password],
