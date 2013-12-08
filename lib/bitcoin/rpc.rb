@@ -28,6 +28,8 @@ class Bitcoin::RPC
       response = JSON.parse(respdata)
       raise Bitcoin::Errors::RPCError, response['error'] if response['error']
       return response['result']
+    rescue Errno::ECONNREFUSED
+      raise Bitcoin::Errors::RPCError, 'Connection Refused'
     rescue => e
       response = JSON.parse(e.response)
       return response
