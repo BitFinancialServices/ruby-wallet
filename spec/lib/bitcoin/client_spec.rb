@@ -8,7 +8,7 @@ describe Bitcoin::Client do
     subject.pass.should == $pass
     subject.host.should == 'localhost'
     subject.port.should == 8332
-    subject.ssl?.should_not be_true
+    subject.ssl?.should_not be true
   end
 
   context "RPC" do
@@ -60,7 +60,7 @@ describe Bitcoin::Client do
 
     service 'getgenerate' do
       it "should produce the expected result" do
-        result.should be_false
+        result.should be false
       end
     end
 
@@ -123,13 +123,13 @@ describe Bitcoin::Client do
     service 'verifymessage' do
       context 'success' do
         it "should produce the expected result" do
-          result('address', 'message', 'signature').should be_true
+          result('address', 'message', 'signature').should be true
         end
       end
 
       context 'failure' do
         it "should produce the expected result" do
-          result('address', 'message', 'signature').should be_false
+          result('address', 'message', 'signature').should be false
         end
       end
     end

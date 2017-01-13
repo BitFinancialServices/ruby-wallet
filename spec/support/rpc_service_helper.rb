@@ -11,7 +11,7 @@ module RPCServiceHelper
       end
       
       define_method :result do |*args|
-        FakeWeb.register_uri(:post, "http://user:pass@localhost:8332", :response => fixture(fixture_name))
+        FakeWeb.register_uri(:post, "http://user:pass@localhost:8332", fixture(fixture_name))
         subject.send(name, *args)
       end
       

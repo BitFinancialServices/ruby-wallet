@@ -31,7 +31,11 @@ class Bitcoin::RPC
     rescue Errno::ECONNREFUSED
       raise Bitcoin::Errors::RPCError, 'Connection Refused'
     rescue => e
-      response = JSON.parse(e.response)
+      if e.respond_to?(:response) && e.response['result'].blank?
+        response = JSON.parse(e.response)
+      else
+        raise
+      end
       return response
     end
   end
