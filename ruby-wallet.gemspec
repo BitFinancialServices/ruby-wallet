@@ -19,9 +19,13 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "rake",    '~> 12.0.0'
-  s.add_development_dependency "rspec",   '~> 3.0'
-  s.add_development_dependency "fakeweb", '~> 1.3.0'
-  s.add_development_dependency "activesupport", "~> 5.0"
-  s.add_runtime_dependency "rest-client", '~> 1.6.3'
+  s.add_development_dependency "rake",        '~> 12.0.0'
+  s.add_development_dependency "rspec",       '~> 3.0'
+  s.add_development_dependency "fakeweb",     '~> 1.3.0'
+  s.add_development_dependency "guard",       '~> 2.14'
+  s.add_development_dependency "guard-rspec", '~> 4.7'
+  s.add_development_dependency "terminal-notifier", '~> 1.7'
+  s.add_development_dependency "terminal-notifier-guard", '~> 1.7'
+  s.add_runtime_dependency "activesupport", '~> 5.0'
+  s.add_runtime_dependency "rest-client",  '~> 1.6.3'
 end
